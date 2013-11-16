@@ -33,6 +33,13 @@ public class String2 implements IComparable
 		return (this._Dato.equalsIgnoreCase(tmp.getDato()));
 	}
 	
+	@Override
+	public boolean diferente(IComparable pComparable) 
+	{
+		String2 tmp = (String2) pComparable;
+		return !(this._Dato.equalsIgnoreCase(tmp.getDato()));
+	}
+	
 	public String getDato()
 	{
 		return this._Dato;

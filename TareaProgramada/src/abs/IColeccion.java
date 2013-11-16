@@ -7,6 +7,8 @@ public interface IColeccion
 	 * @return {@link Boolean}
 	 */
 	public boolean isEmpty();
+	
+	
 	/**
 	 * Eliminar un objeto de la estructura de datos.
 	 * @param pDato {@link IComparable}

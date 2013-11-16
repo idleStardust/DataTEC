@@ -2,13 +2,13 @@ package colas;
 
 import abs.IComparable;
 
-public class Nodo 
+public class NodoCola 
 {
 
 	IComparable _Dato;
-	Nodo _Siguiente;
+	NodoCola _Siguiente;
 	
-	public Nodo(IComparable pDato) 
+	public NodoCola(IComparable pDato) 
 	{
 		this._Dato = pDato;
 		this._Siguiente = null;
@@ -19,12 +19,12 @@ public class Nodo
 		return this._Dato;
 	}
 	
-	public Nodo getNext()
+	public NodoCola getNext()
 	{
 		return this._Siguiente;
 	}
 	
-	public void setNext(Nodo pNodo)
+	public void setNext(NodoCola pNodo)
 	{
 		this._Siguiente = pNodo;
 	}

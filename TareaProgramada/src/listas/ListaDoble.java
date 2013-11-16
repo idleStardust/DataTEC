@@ -91,7 +91,7 @@ public class ListaDoble
 			}
 		}
 		else
-			throw new ExcepcionIndice();
+			throw new ExcepcionIndice(pIndice);
 	}
 	
 	protected void removeLast()
@@ -184,7 +184,7 @@ public class ListaDoble
 		}
 		
 		else
-			throw new ExcepcionIndice();
+			throw new ExcepcionIndice(pIndice);
 	}
 	
 	/**
@@ -291,7 +291,7 @@ public class ListaDoble
 			return tmp.getDato();
 		}
 		else
-			throw new ExcepcionIndice();
+			throw new ExcepcionIndice(pIndice);
 	}
 	
 	/**

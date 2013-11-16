@@ -2,75 +2,65 @@ package colas;
 
 import abs.IComparable;
 import abs.IEncolable;
-
 public class ColaArray implements IEncolable
 {
-		private static final int MAXTAM = 99;
-		
-		//Apuntadores
-		protected int _Head;
-		protected int _Tail;
-		
-		//Arreglo
-		protected IComparable[] _ArrayCola;
-		
-		public ColaArray()
+	final int MAX = 99;
+	IComparable[] _Array;
+	int _Frente;
+	int _Final;
+	
+	public ColaArray()  
+	{
+		this._Array = new IComparable[MAX];
+		this._Final = 0;
+		this._Frente = 0;
+	}
+	
+	public boolean isEmpty()
+	{
+		return(this._Final == this._Frente);
+	}
+	
+	public boolean isFull()
+	{
+		return(this._Final == MAX - 1);
+	}
+	
+	public void print()
+	{
+		System.out.print("Cola: }");
+		for(int x = 0; x < this._Final;x++)
 		{
-			this._Head = 0;
-			this._Tail = MAXTAM - 1;
-			this._ArrayCola = new IComparable [MAXTAM];
+			this._Array[x].print();
+			System.out.print(" ,");
 		}
-		
-		public int siguiente(int pIndex)
-		{
-			return (pIndex + 1) % MAXTAM;
-		}
-		
-		@Override
-		public void enqueue(IComparable pElemento) throws Exception
-		{
-			if ( !this.colaLlena() )
-			{
-				this._Tail = this.siguiente(this._Tail);
-				this._ArrayCola[this._Tail] = pElemento;
-			}
-			else
-				throw new Exception("Cola Llena: ");
-		}
+		System.out.println("} ");
+	}
 
-		@Override
-		public IComparable dequeue() throws Exception 
+	@Override
+	public IComparable dequeue() throws Exception
+	{
+		if(this.isEmpty())
+			throw new Exception("Cola Vacia");
+		else
 		{
-			IComparable tmp = null;
-			if ( !this.colaVacia() )
-			{
-				tmp = this._ArrayCola[this._Head];
-				this._Head = this.siguiente(this._Head);
-			}
-			else
-				throw new Exception("Cola vacia: ");
-			return tmp;
+			IComparable result = this._Array[0];
+			this._Array[0] = null;
+			for(int i = 0; i < this._Final; i++)
+				this._Array[i] = this._Array[i + 1];
+			this._Final--;
+			return result;
 		}
+	}
 
-		@Override
-		public boolean colaVacia() 
+	@Override
+	public void enqueue(IComparable pElemento) throws Exception
+	{
+		if(this.isFull())
+			throw new Exception("Cola Llena");
+		else
 		{
-			return this._Head == this.siguiente(this._Tail);
+			this._Array[this._Final++] = pElemento;
 		}
-		
-		@Override
-		public boolean colaLlena()
-		{
-			return this._Head == this.siguiente( this.siguiente(this._Tail));
-		}
-		
-		public IComparable top() throws Exception
-		{
-			if ( !this.colaVacia() )
-			{
-				return this._ArrayCola[this._Head];
-			}
-			else
-				throw new Exception("Cola vacia: ");
-		}
+	}
 }

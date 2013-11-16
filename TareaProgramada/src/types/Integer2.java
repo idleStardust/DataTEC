@@ -32,6 +32,13 @@ public class Integer2 implements IComparable
 		return (this._Dato == tmp.getDato());
 	}
 	
+	@Override
+	public boolean diferente(IComparable pComparable) 
+	{
+		Integer2 tmp = (Integer2) pComparable;
+		return (this._Dato != tmp.getDato());
+	}
+	
 	public int getDato()
 	{
 		return this._Dato;

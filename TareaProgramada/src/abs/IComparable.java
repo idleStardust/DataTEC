@@ -8,5 +8,7 @@ public interface IComparable
 	
 	public boolean igual(IComparable pComparable);
 	
+	public boolean diferente(IComparable pComparable);
+	
 	public void print();
 }

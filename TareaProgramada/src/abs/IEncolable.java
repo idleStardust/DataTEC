@@ -6,10 +6,10 @@ public interface IEncolable
 	 * Verifica si la cola tiene elementos.
 	 * @return {@link Boolean}
 	 */
-	public boolean colaVacia();
+	public boolean isEmpty();
 	
 	/**
-	 * Elimina el elemento que está al frente de la cola  y lo retorna. 
+	 * Elimina el elemento que estï¿½ al frente de la cola  y lo retorna. 
 	 * @return {@link IComparable}
 	 * @throws Exception
 	 */
@@ -22,10 +22,9 @@ public interface IEncolable
 	 */
 	public void enqueue(IComparable pElemento) throws Exception;
 	
+	
 	/**
-	 * Retorna el frente de la cola.
-	 * @return {@link IComparable
-	 * @throws Exception
+	 * Imprime en consola todos los elementos en la cola.
 	 */
-	public IComparable top() throws Exception;
+	public void print();
 }

@@ -38,6 +38,13 @@ public class Boolean2 implements IComparable
 		return (this._Dato  ==  tmp.getDato());
 	}
 	
+	@Override
+	public boolean diferente(IComparable pComparable) 
+	{
+		Boolean2 tmp = (Boolean2) pComparable;
+		return (this._Dato  !=  tmp.getDato());
+	}
+	
 	public boolean getDato()
 	{
 		return this._Dato;

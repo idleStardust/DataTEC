@@ -5,9 +5,9 @@ import abs.IComparable;
 public class Nodo 
 {
 	protected IComparable _Dato;
-	protected Nodo _Hijo;
+	protected Nodo _Next;
 	
-	public Nodo(IComparable pDato)
+	protected Nodo(IComparable pDato)
 	{
 		this._Dato = pDato;
 	}
@@ -20,5 +20,28 @@ public class Nodo
 	protected void setDato(IComparable pDato)
 	{
 		this._Dato = pDato;
+	}
+	
+	protected void print()
+	{
+		this._Dato.print();
+	}
+	
+	/**
+	 * Obtiene el NodoDoble Posterior al NodoDoble.
+	 * @return {@link IComparable}
+	 */
+	protected Nodo getNext() 
+	{
+		return this._Next;
+	}
+
+	/**
+	 * Establece un nuevo NodoDoble posterior.
+	 * @param pNext {@link NodoDoble}
+	 */
+	protected void setNext(Nodo pNext) 
+	{
+		this._Next = pNext;
 	}
 }

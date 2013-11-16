@@ -1,9 +1,8 @@
-package listas;
+package colas;
 
-import abs.IColeccion;
 import abs.IComparable;
 
-public class Arreglo implements IColeccion
+public class Arreglo
 {
 	IComparable[] _Dato;
 	
@@ -15,11 +14,10 @@ public class Arreglo implements IColeccion
 	{
 		this._Dato = new IComparable[pLargo];
 	}
-
+	
 	/**
 	 * @see IColeccionista
 	 */
-	@Override
 	public void remove(IComparable pDato) 
 	{
 		int index = this.search(pDato);
@@ -66,8 +64,7 @@ public class Arreglo implements IColeccion
 	/**
 	 * @see IColeccionista
 	 */
-	@Override
-	public void add(IComparable pDato) 
+	public void addEnd(IComparable pDato) 
 	{
 		//Largo Arreglo Viejo
 		int tmplargo = this._Dato.length;
@@ -86,6 +83,24 @@ public class Arreglo implements IColeccion
 		this._Dato = tmp;
 	}
 	
+	public void addStart(IComparable pDato) 
+	{
+		//Nueva longitud arreglo
+		int tmplargo = this._Dato.length + 1;
+		
+		//Nuevo Arreglo
+		IComparable[] tmp = new IComparable[ tmplargo ];
+		
+		//Agregar nuevo dato
+		tmp[0] = pDato;
+		
+		//Copiar Datos Viejo Arreglo
+		for(int x = 0; x < tmplargo; x++)
+			tmp[x + 1] = this._Dato[x];
+		
+		//Reemplazar viejo Dato
+		this._Dato = tmp;
+	}
 	/**
 	 * Establece un valor para determinada posicion de un arreglo
 	 * @param pDato {@link IComparable}
@@ -121,14 +136,13 @@ public class Arreglo implements IColeccion
 	/**
 	 * @see IColeccionista
 	 */
-	@Override
 	public void print() 
 	{
 		System.out.print("[");
 		{
 			for(int x = 0; x < this._Dato.length; x++)
 			{
-				System.out.print(this._Dato[x]);
+				this._Dato[x].print();
 				System.out.print(", ");
 			}
 		}
@@ -180,7 +194,6 @@ public class Arreglo implements IColeccion
 		this._Dato[pIndice2] = tmpdato;
 	}
 
-	@Override
 	public boolean isEmpty()
 	{
 		return false;

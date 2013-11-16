@@ -5,29 +5,41 @@ import abs.IEncolable;
 
 /**
  * 
- *  FIFO (First In First Out)
- * @author LuisArturo
+ *  LIFO (Last In First Out)
+ * @author ArturoMora
  *
  */
 public class ColaLista implements IEncolable
 {
-	protected Nodo _Frente;
-	protected Nodo _Final;
+	/**
+	 * Nodo frontal de la cola.
+	 */
+	protected NodoCola _Frente;
+	
+	/**
+	 * Nodo Final de la cola.
+	 */
+	protected NodoCola _Final;
 	
 	
 	@Override
-	public IComparable dequeue() 
+	public IComparable dequeue() throws Exception 
 	{
-		Nodo tmp = this._Frente;
-		if(tmp == this._Final)
+		NodoCola tmp = this._Frente;
+		if(this.isEmpty())
+			throw new Exception("Cola vacia");
+		
+		else if(tmp == this._Final)
 			this._Final = this._Frente = null;
+		
 		else
 			this._Frente = tmp.getNext();
+		
 		return tmp.getDato();
 	}
 
 	@Override
-	public boolean colaVacia()
+	public boolean isEmpty()
 	{
 		return this._Frente == null;
 	}
@@ -36,8 +48,8 @@ public class ColaLista implements IEncolable
 	public void enqueue(IComparable pElemento)
 	{
 
-		Nodo tmp = new Nodo(pElemento);
-		if(this.colaVacia())
+		NodoCola tmp = new NodoCola(pElemento);
+		if(this.isEmpty())
 		{
 			this._Final = this._Frente = tmp;
 		}
@@ -47,26 +59,17 @@ public class ColaLista implements IEncolable
 			this._Final = tmp;
 		}
 	}
-
-	@Override
-	public IComparable top() throws Exception 
-	{
-		if( !this.colaVacia())
-			return this._Frente.getDato();
-		else
-			throw new Exception("Cola vacia");
-	}
 	
 	public void print()
 	{
-		Nodo tmp = this._Frente;
-		System.out.print("] ");
+		NodoCola tmp = this._Frente;
+		System.out.print("Cola: } ");
 		while(tmp != null)
 		{
 			tmp.getDato().print();
 			System.out.print(", ");
 			tmp = tmp.getNext();
 		}
-		System.out.println("] ");
+		System.out.println("} ");
 	}
 }
