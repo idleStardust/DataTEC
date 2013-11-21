@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<insercion>
+	<prueba id="1">
+		<tipo>lista</tipo>
+		<categoria>listadoble</categoria>
+		<numinsertados>>100</numinsertados>
+	</prueba>
+	<prueba id="2">
+		<tipo>arbol</tipo>
+		<categoria>avl</categoria>
+		<numinsertados>>700</numinsertados>
+	</prueba>
+	<prueba id="3">
+		<tipo>cola</tipo>
+		<categoria>colaarray</categoria>
+		<numinsertados>>200</numinsertados>
+	</prueba>
+<insercion/>
